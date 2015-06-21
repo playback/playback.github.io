@@ -1,0 +1,17 @@
+# Site settings
+timezone: Europe/Madrid
+title: playback blog
+email: playback85@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Another blog in Jekyll
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://playback.github.io" # the base hostname & protocol for your site
+twitter_username: playback85
+github_username:  playback
+
+# Build settings
+markdown: kramdown
+
+# Markdown settings
+kramdown:
+    input: GFM
