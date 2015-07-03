@@ -27,15 +27,15 @@
           return new google.maps.LatLng(49.808554, -3.494053);
         } else if (today < getDate("2015/07/05 21:00")) { //Portsmouth
           return new google.maps.LatLng(50.8148511,-1.0965218);
-        } else if (today < getDate("2015/09/05 10:00")) { //Salisbury
+        } else if (today < getDate("2015/07/06 14:00")) { //Salisbury
           return new google.maps.LatLng(51.0797111,-1.8083435);
-        /*} else if (today < getDate("2015/07/05 19:00")) { //Santander
-          return new google.maps.LatLng(44.5403, -78.5463);
-        } else if (today < getDate("2015/07/05 19:00")) { //Santander
-          return new google.maps.LatLng(44.5403, -78.5463);
-        } else if (today < getDate("2015/07/05 19:00")) { //Santander
-          return new google.maps.LatLng(44.5403, -78.5463);
-        } else if (today < getDate("2015/07/05 19:00")) { //Santander
+        } else if (today < getDate("2015/07/07 18:00")) { //Jane Austin
+          return new google.maps.LatLng(51.133093,-0.989005);
+        } else if (today < getDate("2015/07/07 21:30")) { //Harry Potter
+          return new google.maps.LatLng(51.6909914,-0.4178559);
+        } else if (today < getDate("2015/07/09 09:00")) { //Oxford
+          return new google.maps.LatLng(51.7504163,-1.2475878);
+        /*} else if (today < getDate("2015/07/05 19:00")) { //
           return new google.maps.LatLng(44.5403, -78.5463);
         }*/
         } else { // De vuelta en Madrid
@@ -54,10 +54,15 @@
         });
       marker.setAnimation(google.maps.Animation.BOUNCE);
       }
+      if (today < getDate("2015/07/05 19:00")) { //Arrive to UK, moreless
+          var zoom = 7;
+      } else {
+      	  var zoom = 8;
+      }
       var mapCanvas = document.getElementById('map-canvas');
       var mapOptions = {
         center: getPosition(),
-        zoom: 7,
+        zoom: zoom,
         //mapTypeId: google.maps.MapTypeId.ROADMAP
         styles: [{"featureType":"water","stylers":[{"visibility":"on"},{"color":"#b5cbe4"}]},{"featureType":"landscape","stylers":[{"color":"#efefef"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#83a5b0"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#bdcdd3"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e3eed3"}]},{"featureType":"administrative","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"road"},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{},{"featureType":"road","stylers":[{"lightness":20}]}]
       }
