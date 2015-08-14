@@ -1,0 +1,169 @@
+    <!-- Map Section -->
+    <!--<style>
+      #map-canvas {
+        width: 1000px;
+        height: 600px;
+      }
+    </style>-->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function getDate(dateString) {
+        var dateValue = new Date(Date.parse(dateString));
+        return dateValue;
+      }
+      function getPosition() {
+        var today = new Date();
+        if (today < getDate("2015/08/14 10:52")) { //Madrid
+          return new google.maps.LatLng(40.4271128,-3.6821114);
+        } else {
+          return new google.maps.LatLng(43.4140297,-4.0563102);
+        } /*else if (today < getDate("2015/07/04 21:00")) { //Santander
+          return new google.maps.LatLng(43.4613444,-3.8111371);
+        } else if (today < getDate("2015/07/05 03:00")) { //Navegando tarde/noche
+          return new google.maps.LatLng(45.327804, -5.339756);
+        } else if (today < getDate("2015/07/05 11:00")) { //Navegando madrugada
+          return new google.maps.LatLng(47.501230, -6.218662);
+        } else if (today < getDate("2015/07/05 19:00")) { //Navegando mediodia
+          return new google.maps.LatLng(49.808554, -3.494053);
+        } else if (today < getDate("2015/07/05 21:00")) { //Portsmouth
+          return new google.maps.LatLng(50.8148511,-1.0965218);
+        } else if (today < getDate("2015/07/07 11:00")) { //Salisbury
+          return new google.maps.LatLng(51.0797111,-1.8083435);
+        } else if (today < getDate("2015/07/07 14:00")) { // Winchester
+          return new google.maps.LatLng(51.0641436,-1.3207917);
+        } else if (today < getDate("2015/07/07 18:00")) { //Jane Austin
+          return new google.maps.LatLng(51.133093,-0.989005);
+        } else if (today < getDate("2015/07/07 21:30")) { //Harry Potter
+          return new google.maps.LatLng(51.6909914,-0.4178559);
+        } else if (today < getDate("2015/07/09 10:00")) { //Oxford
+          return new google.maps.LatLng(51.7504163,-1.2475878);
+        } else if (today < getDate("2015/07/09 12:00")) { //Bleheim palace
+          return new google.maps.LatLng(51.841365,-1.360972);
+        } else if (today < getDate("2015/07/09 12:45")) { //Burford
+          return new google.maps.LatLng(51.8043191,-1.6334708);
+        } else if (today < getDate("2015/07/09 13:30")) { //Stow-on-the-world
+          return new google.maps.LatLng(51.9312108,-1.7194062);
+        } else if (today < getDate("2015/07/09 15:00")) { //Broadway
+          return new google.maps.LatLng(52.0396946,-1.8624682);
+        } else if (today < getDate("2015/07/09 17:00")) { //Chipping Campden
+          return new google.maps.LatLng(52.032503,-1.7874858);
+        } else if (today < getDate("2015/07/09 18:00")) { //Upton House
+          return new google.maps.LatLng(52.1069859,-1.4592215);
+        } else if (today < getDate("2015/07/10 10:00")) { //Stratford-upon-Avon
+          return new google.maps.LatLng(52.1966458,-1.7129966);
+        } else if (today < getDate("2015/07/10 16:00")) { //Warwick castle
+          return new google.maps.LatLng(52.279668,-1.585228);
+        } else if (today < getDate("2015/07/10 20:00")) { //Portmeirion
+          return new google.maps.LatLng(52.913688,-4.0972613);
+        } else if (today < getDate("2015/07/11 10:30")) { //Tyddyn Llwyn
+          return new google.maps.LatLng(52.9216703,-4.1386464);
+        } else if (today < getDate("2015/07/11 12:00")) { //Beddgelert
+          return new google.maps.LatLng(53.0121823,-4.1056961);
+        } else if (today < getDate("2015/07/11 14:00")) { //Llanberis
+          return new google.maps.LatLng(53.1166872,-4.121835);
+        } else if (today < getDate("2015/07/11 15:30")) { //Conwy
+          return new google.maps.LatLng(53.2741377,-3.8405255);
+        } else if (today < getDate("2015/07/11 18:30")) { //Llandudno
+          return new google.maps.LatLng(53.3193766,-3.8239764);
+        } else if (today < getDate("2015/07/11 20:00")) { //Betws-y-Coed
+          return new google.maps.LatLng(53.0910578,-3.8032385);
+        } else if (today < getDate("2015/07/12 08:30")) { //Ffestiniog Blaneau
+          return new google.maps.LatLng(52.9869904,-3.9370773);
+        } else if (today < getDate("2015/07/12 15:00")) { //Zip-world titan
+          return new google.maps.LatLng(53.005073,-3.939831);
+        } else if (today < getDate("2015/07/12 18:00")) { //Tewkesbury
+          return new google.maps.LatLng(51.9925572,-2.1378123);
+        } else if (today < getDate("2015/07/13 10:00")) { //Bourton on the water
+          return new google.maps.LatLng(51.8761458,-1.7708784);
+        } else if (today < getDate("2015/07/13 12:00")) { //Bibury
+          return new google.maps.LatLng(51.7593671,-1.8317537);
+        } else if (today < getDate("2015/07/13 14:00")) { //Hatherop Castle school
+          return new google.maps.LatLng(51.74494,-1.779624);
+        } else if (today < getDate("2015/07/13 16:00")) { //Cirencester
+          return new google.maps.LatLng(51.7149797,-1.9663071);
+        } else if (today < getDate("2015/07/13 18:00")) { //Castle Combe
+          return new google.maps.LatLng(51.4923938,-2.2303903);
+        } else if (today < getDate("2015/07/13 20:00")) { //Great Chalfield manor and garden
+          return new google.maps.LatLng(51.3676407,-2.2022462);
+        } else if (today < getDate("2015/07/14 15:00")) { //Bath
+          return new google.maps.LatLng(51.3801265,-2.36453);
+        } else if (today < getDate("2015/07/14 21:00")) { //Bristol
+          return new google.maps.LatLng(51.468489,-2.5907094);
+        } else if (today < getDate("2015/07/15 10:00")) { //Bath
+          return new google.maps.LatLng(51.3801265,-2.36453);
+        } else if (today < getDate("2015/07/15 13:00")) { //Longleat House
+          return new google.maps.LatLng(51.1858195,-2.2744381);
+        } else if (today < getDate("2015/07/15 15:00")) { //Stourhead
+          return new google.maps.LatLng(51.1051101,-2.3179141);
+        } else if (today < getDate("2015/07/15 18:00")) { //Glastonbury
+          return new google.maps.LatLng(51.1460106,-2.7032909);
+        } else if (today < getDate("2015/07/16 10:00")) { //Tintagel
+          return new google.maps.LatLng(50.6626429,-4.7486982);
+
+        } else if (today < getDate("2015/07/18 11:30")) { //Land's end
+          return new google.maps.LatLng(50.0647451,-5.7150079);
+        } else if (today < getDate("2015/07/18 17:00")) { //Marazion
+          return new google.maps.LatLng(50.1277611,-5.4661131);
+
+
+        } else if (today < getDate("2015/07/19 10:30")) { //Fowey
+          return new google.maps.LatLng(50.1277611,-5.4661131);
+
+        } else if (today < getDate("2015/07/19 16:45")) { //Plymouth
+          return new google.maps.LatLng(50.3887424,-4.11257);
+
+        } else if (today < getDate("2015/07/19 20:30")) { //Navegando tarde/noche
+          return new google.maps.LatLng(49.808554, -3.494053);
+        } else if (today < getDate("2015/07/20 02:30")) { //Navegando madrugada
+          return new google.maps.LatLng(47.501230, -6.218662);
+        } else if (today < getDate("2015/07/20 08:30")) { //Navegando mediodia
+          return new google.maps.LatLng(45.327804, -5.339756);
+
+
+        } else if (today < getDate("2015/07/20 14:30")) { //Santander
+          return new google.maps.LatLng(50.0647451,-5.7150079);
+        } else if (today < getDate("2015/07/20 17:30")) { //En ruta a Madrid
+          return new google.maps.LatLng(42.7098711,-3.6901299);
+        
+        } else { // De vuelta en Madrid
+          return new google.maps.LatLng(40.4271128,-3.6821114);
+        }*/
+      }
+
+    function initialize() {
+      var westfalia = './assets/westfalia.png';
+      function addWestfalia(position) {
+        var marker = new google.maps.Marker({
+          position: position,
+          icon: westfalia,
+          map: map,
+          title: "Aqui estamos!"
+        });
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+      today = new Date();
+      if (today < getDate("2015/07/05 19:00")) { //Arrive to UK, moreless
+          var zoom = 7;
+      } else {
+      	  var zoom = 8;
+      }
+      var mapCanvas = document.getElementById('map-canvas');
+      var mapOptions = {
+        center: getPosition(),
+        zoom: zoom,
+        //mapTypeId: google.maps.MapTypeId.ROADMAP
+        styles: [{"featureType":"water","stylers":[{"visibility":"on"},{"color":"#b5cbe4"}]},{"featureType":"landscape","stylers":[{"color":"#efefef"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#83a5b0"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#bdcdd3"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e3eed3"}]},{"featureType":"administrative","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"road"},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{},{"featureType":"road","stylers":[{"lightness":20}]}]
+      }
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+
+      /* SET CURRENT POSITION DEPENDING ON TIME */
+      var home = getPosition(); 
+    addWestfalia(home);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
+
+
+  <div id="map-canvas"></div>
